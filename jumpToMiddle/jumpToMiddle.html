@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jump to middle</title>
+    <style>
+        * {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-family: Microsoft YaHei;
+        }
+
+        .clearfix::after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+        .wrapper {
+            width: 400px;
+            margin: 30px auto;
+            color: #495060;
+            padding: 20px;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+        }
+
+        .wrapper .list {
+            float: left;
+        }
+
+        .wrapper .title {
+            width: 100%;
+            /* color: #495060; */
+            text-align: center;
+        }
+
+        .container {
+            width: 140px;
+            height: 300px;
+            background-color: #f5f5dc;
+            margin-bottom: 10px;
+            overflow-y: auto;
+        }
+
+        .container li {
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            padding: 5px 0;
+            background-color: #56aaad61;
+            color: #495060;
+            transition: .2s;
+            box-sizing: border-box;
+        }
+
+        .container li:hover {
+            background-color: #72cccf61;
+        }
+
+        .tools {
+            float: right;
+            width: 250px;
+        }
+
+        .tools>div {
+            margin-bottom: 20px;
+        }
+
+        .tools label {
+            display: inline-block;
+            width: 125px;
+            /* color: #495060; */
+            margin-right: 10px;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        .tools input {
+            width: 100px;
+            border-radius: 4px;
+            border: 1px dashed #abab93;
+            text-indent: 4px;
+            padding: 2px;
+            /* color: #495060; */
+        }
+
+        .tools #btn {
+            float: right;
+            width: 50px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .tips {
+            margin-top: 30px;
+        }
+
+        .tips p {
+            font-size: 14px;
+            margin-bottom: 10px;
+            /* color: #495060; */
+        }
+
+        .emphasizedText {
+            font-style: inherit;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <div class="list">
+            <p class="title">Index</p>
+            <ul class="container"></ul>
+        </div>
+        
+        <form class="tools">
+            <div>
+                <label for="list-amount">List items Amount:</label>
+                <input id="list-amount" type="text" value="101">
+            </div>
+            <div>
+                <label for="selected-index">Selected Index:</label>
+                <input id="selected-index" type="text" value="51">
+            </div>
+            <div class="clearfix">
+                <button id="btn" type="button">run</button>
+            </div>
+            <div class="tips">
+                <p><i class="emphasizedText">点击按钮</i>，使所选index项跳至左侧容器的中部</p>
+                <p><i class="emphasizedText">Click the button</i> to move the item of the selected index to the middle of the left side container</p>
+            </div>
+        </form>
+    </div>
+
+
+<script>
+let btn = document.querySelector('#btn');
+
+function isPositiveNum(num){
+    return !(isNaN(num) || num<0);
+}
+
+function initList(amount){
+    amount = parseInt(amount);
+    if (!isPositiveNum(amount)) return;
+
+    let container = document.querySelector('.container');
+    let childrenList = container.childNodes;
+    let itemTemp = document.createElement('LI');
+    let fragment = document.createDocumentFragment();
+
+    for (let i=0; i<amount; i++) {
+        let item = itemTemp.cloneNode();
+
+        item.innerText = i;
+        fragment.appendChild(item);
+    }
+
+    for (let i=childrenList.length-1; i>=0; i--) {
+        container.removeChild(childrenList[i]);
+    }
+
+    container.appendChild(fragment);
+}
+
+// 核心代码 | core function
+function jumpToMiddle(container, childrenList, index) {
+    index = parseInt(index);
+    if (!isPositiveNum(index)) return;
+
+    setTimeout(()=>{
+        let listLen = childrenList.length;
+        let containerHeight = container.offsetHeight;
+        let itemHeight = childrenList[0] ? childrenList[0].offsetHeight : 0;
+        let num = index+1;
+
+        if (containerHeight && itemHeight && containerHeight > itemHeight && listLen >= num && num-1 > 0) {
+            let topSpan = ( containerHeight - itemHeight ) / 2;
+            let upperHeight = ( num - 1) * itemHeight;
+            let scrollTop = upperHeight - topSpan;
+            scrollTop < 0 && (scrollTop = 0);
+            container.scrollTop = scrollTop;
+        } else {
+            container.scrollTop = 0;
+        }
+
+        childrenList = null;
+        container = null;
+    }, 0);
+}
+//
+
+function highlightSelectedItem(nodeList, index, delay){
+    index = parseInt(index);
+    let len = nodeList.length;
+    let num = index + 1;
+    if (!isPositiveNum(index) || len===0 || num > len) return;
+
+    setTimeout(()=>{
+        let selectedItem = nodeList[index];
+
+        if (selectedItem) {
+            Object.assign(selectedItem.style, {
+                border: '2px dashed #ed3535d9',
+                borderRadius: '4px'
+            });
+        }
+
+        nodeList = null;
+    }, delay);
+}
+
+function handleBtnClick(e) {
+    let listAmount = document.querySelector('#list-amount').value;
+    initList(listAmount);
+    
+    setTimeout(()=>{
+        let container = document.querySelector('.container');
+        let childrenList = container.querySelectorAll('li');
+        let selectedIndex = document.querySelector('#selected-index').value;
+        
+        jumpToMiddle(container, childrenList, selectedIndex);
+        highlightSelectedItem(childrenList, selectedIndex, 400);
+    }, 0);
+}
+
+btn.addEventListener('click', handleBtnClick);
+
+</script>
+</body>
+
+</html>
