@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            width: 200px;
+            height: 500px;
+            overflow: auto;
+        }
+
+        .inner {
+            width: 700px;
+            height: 10000px;
+            background-color: bisque;
+        }
+        .big-padding {
+            height: 2000px;
+        }
+
+        .controller {
+            width: 150px;
+            padding: 10px;
+            background-color: #a0988e;
+            position: absolute;
+            top: 30px;
+            left: 250px;
+            border-radius: 6px;
+        }
+
+        .controller p {
+            width: 100%;
+            text-align: center;
+            margin: 0 0 6px 0;
+        }
+
+        .controller span {
+            display: inline-block;
+            font-size: 14px;
+            height: 20px;
+            line-height: 20px;
+            margin: 4px;
+            background-color: #ded8d1;
+            cursor: pointer;
+            padding: 0 2px;
+            border-radius: 4px;
+        }
+
+        .controller span:hover {
+            background-color: #d1ccc5;
+        }
+
+    </style>
+    <script src="./scrollController.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="inner"></div>
+    </div>
+
+    <div class="controller">
+        <p>Controller</p>
+        <span onclick="handleControllerBtn('toggle allowXScroll')">Toggle AllowXScroll</span>
+        <span onclick="handleControllerBtn('dispose')">Dispose</span>
+    </div>
+
+    <div class="big-padding"></div>
+
+<script>
+// scroll instance
+    let wrapperDom = document.querySelector('.wrapper');
+    let innerDom = document.querySelector('.inner');
+    let scrollController = ScrollController(wrapperDom, innerDom);
+
+    console.log(scrollController);
+
+// controller button
+    let allowXScroll = true;
+
+    function handleControllerBtn (type) {
+        switch (type) {
+            case 'toggle allowXScroll':
+                allowXScroll = !allowXScroll;
+                scrollController.setOptions({allowXScroll});
+                break;
+            case 'dispose':
+                scrollController.despose();
+                break;
+        }
+    }
+</script>
+</body>
+</html>

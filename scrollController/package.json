@@ -1,0 +1,21 @@
+{
+  "name": "scroll-controller",
+  "version": "1.0.0",
+  "description": "allow controlling horizontal scroll",
+  "main": "scrollController.js",
+  "scripts": {
+    "build": "babel scrollController.js --out-file scrollController.min.js"
+  },
+  "keywords": [
+    "scroll",
+    "horizontal"
+  ],
+  "author": "Trevor Hsu",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-minify": "^0.5.0"
+  }
+}
