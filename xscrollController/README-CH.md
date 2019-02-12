@@ -1,11 +1,15 @@
-## scroll-controller
+## xscroll-controller
 [English Doc](https://github.com/trevorHsu/javascriptDemo/blob/master/xscrollController/README.md)
 
 ### 当竖向滚动条移至顶部或底部时，允许横向滚动
 
 ## 安装
+通过npm:
+```
+npm install xscroll-controller --save
+```
 
-使用script标签：
+通过script标签：
 ```
 <script src="./xscrollController.min.js"></script>
 ```

@@ -1,9 +1,13 @@
-## scroll-controller
-[中文文档](https://github.com/trevorHsu/javascriptDemo/blob/master/xscrollController/README-CH.md)
+## xscroll-controller
+[????](https://github.com/trevorHsu/javascriptDemo/blob/master/xscrollController/README-CH.md)
 
 ### Allowing horizontal scrolling when vertical scroll is moved to top or bottom
 
 ## Install
+Using npm:
+```
+npm install xscroll-controller --save
+```
 
 Using a script tag:
 ```
