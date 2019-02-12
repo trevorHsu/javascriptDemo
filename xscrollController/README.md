@@ -1,5 +1,5 @@
 ## scroll-controller
-[中文文档](https://github.com/trevorHsu/javascriptDemo/blob/master/scrollController/README-CH.md)
+[中文文档](https://github.com/trevorHsu/javascriptDemo/blob/master/xscrollController/README-CH.md)
 
 ### Allowing horizontal scrolling when vertical scroll is moved to top or bottom
 
@@ -7,7 +7,7 @@
 
 Using a script tag:
 ```
-<script src="./scrollController.min.js"></script>
+<script src="./xscrollController.min.js"></script>
 ```
 
 ## API
@@ -17,7 +17,7 @@ Using a script tag:
 ```
 var wrapperDom = document.querySelector('.wrapper');
 var innerDom = document.querySelector('.inner');
-var scrollController = ScrollController(wrapperDom, innerDom);
+var xscrollController = XscrollController(wrapperDom, innerDom);
 ```
 
 ### Instance Functions
@@ -34,15 +34,11 @@ var scrollController = ScrollController(wrapperDom, innerDom);
 
 ### Example
 ```
-var scrollController = ScrollController(wrapperDom, innerDom);
-```
-
-```
 // setOptions
-scrollController.setOptions({allowXScroll: false});
+xscrollController.setOptions({allowXScroll: false});
 ```
 
 ```
 // destory
-scrollController.destory();
+xscrollController.destory();
 ```

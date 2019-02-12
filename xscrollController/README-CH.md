@@ -1,5 +1,5 @@
 ## scroll-controller
-[English Doc](https://github.com/trevorHsu/javascriptDemo/blob/master/scrollController/README.md)
+[English Doc](https://github.com/trevorHsu/javascriptDemo/blob/master/xscrollController/README.md)
 
 ### 当竖向滚动条移至顶部或底部时，允许横向滚动
 
@@ -7,7 +7,7 @@
 
 使用script标签：
 ```
-<script src="./scrollController.min.js"></script>
+<script src="./xscrollController.min.js"></script>
 ```
 
 ## API
@@ -17,7 +17,7 @@
 ```
 var wrapperDom = document.querySelector('.wrapper');
 var innerDom = document.querySelector('.inner');
-var scrollController = ScrollController(wrapperDom, innerDom);
+var xscrollController = XscrollController(wrapperDom, innerDom);
 ```
 
 ### 实例方法
@@ -34,15 +34,11 @@ var scrollController = ScrollController(wrapperDom, innerDom);
 
 ### 示例
 ```
-var scrollController = ScrollController(wrapperDom, innerDom);
-```
-
-```
 // setOptions
-scrollController.setOptions({allowXScroll: false});
+xscrollController.setOptions({allowXScroll: false});
 ```
 
 ```
 // destory
-scrollController.destory();
+xscrollController.destory();
 ```

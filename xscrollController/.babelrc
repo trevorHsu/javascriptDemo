@@ -3,7 +3,7 @@
       ["env"],
       ["minify", {
         "mangle": {
-            "exclude": ["ScrollControllerClass"]
+            "exclude": ["XscrollControllerClass"]
           }
       }]
     ]

@@ -1,17 +1,22 @@
 {
-  "name": "scroll-controller",
-  "version": "1.0.0",
+  "name": "xscroll-controller",
+  "version": "1.0.1",
   "description": "allow horizontal scrolling",
-  "main": "scrollController.js",
+  "main": "xscrollController.js",
   "scripts": {
-    "build": "babel scrollController.js --out-file scrollController.min.js"
+    "build": "babel xscrollController.js --out-file xscrollController.min.js"
   },
   "keywords": [
     "scroll",
+    "xscroll",
     "horizontal"
   ],
   "author": "Trevor Hsu",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trevorHsu/javascriptDemo/tree/master/xscrollController"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",

@@ -12,8 +12,8 @@
         let globalObj = this || window;
         globalObj[name] = definition();
     }
-})('ScrollController', function() {
-    function ScrollController (wrapperDom, innerDom, options) {
+})('XscrollController', function() {
+    function XscrollController (wrapperDom, innerDom, options) {
         let isDOM = ( typeof HTMLElement === 'object' ) ?
                 function(obj){
                     return obj instanceof HTMLElement;
@@ -23,19 +23,19 @@
                 }
         
         if (!isDOM(wrapperDom) || !isDOM(innerDom)) {
-            throw new Error('[ScrollController]: parameters should be DOM Node');
+            throw new Error('[XscrollController]: parameters should be DOM Node');
         }
     
-        return new ScrollControllerClass(wrapperDom, innerDom, options);
+        return new XscrollControllerClass(wrapperDom, innerDom, options);
     };
 
-    function ScrollControllerClass (wrapperDom, innerDom, options = {}) {
+    function XscrollControllerClass (wrapperDom, innerDom, options = {}) {
         let self = this;
         self.wrapperDom = wrapperDom;
         self.innerDom = innerDom;
 
         function attachProperties(options) {
-            self.id = `scrollController_${Date.now()}`;
+            self.id = `xscrollController_${Date.now()}`;
             self.setOptions(options);
         }
 
@@ -95,8 +95,8 @@
         addListeners(wrapperDom);
     }
 
-    ScrollControllerClass.prototype = {
-        constructor: ScrollControllerClass,
+    XscrollControllerClass.prototype = {
+        constructor: XscrollControllerClass,
         setOptions: function(options) {
             let {allowXScroll} = options;
     
@@ -141,5 +141,5 @@
     }
 
 //
-    return ScrollController;
+    return XscrollController;
 }));
