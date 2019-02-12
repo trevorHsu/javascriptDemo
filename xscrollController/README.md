@@ -1,5 +1,5 @@
 ## xscroll-controller
-[????](https://github.com/trevorHsu/javascriptDemo/blob/master/xscrollController/README-CH.md)
+[中文文档](https://github.com/trevorHsu/javascriptDemo/blob/master/xscrollController/README-CH.md)
 
 ### Allowing horizontal scrolling when vertical scroll is moved to top or bottom
 

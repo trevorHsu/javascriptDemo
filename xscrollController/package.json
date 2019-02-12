@@ -1,6 +1,6 @@
 {
   "name": "xscroll-controller",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "allow horizontal scrolling",
   "main": "xscrollController.js",
   "scripts": {
