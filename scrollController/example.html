@@ -52,8 +52,8 @@
         .controller span:hover {
             background-color: #d1ccc5;
         }
-
     </style>
+
     <script src="./scrollController.min.js"></script>
 </head>
 <body>
@@ -64,7 +64,7 @@
     <div class="controller">
         <p>Controller</p>
         <span onclick="handleControllerBtn('toggle allowXScroll')">Toggle AllowXScroll</span>
-        <span onclick="handleControllerBtn('dispose')">Dispose</span>
+        <span onclick="handleControllerBtn('destory')">destory</span>
     </div>
 
     <div class="big-padding"></div>
@@ -86,8 +86,8 @@
                 allowXScroll = !allowXScroll;
                 scrollController.setOptions({allowXScroll});
                 break;
-            case 'dispose':
-                scrollController.despose();
+            case 'destory':
+                scrollController.destory();
                 break;
         }
     }

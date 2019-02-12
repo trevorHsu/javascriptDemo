@@ -57,21 +57,19 @@
             let deltaY = e.deltaY || e.detail;
         
             if (self.allowXScroll && wrapperDom.scrollTop === 0 && deltaY < 0) { // vertical scroll on the top
-                if (wrapperDom.scrollLeft !== 0) preventDefault(e);
-        
-                for (let i=0; i<20; i++) {
-                    wrapperDom.scrollLeft -= 1;
+                if (wrapperDom.scrollLeft !== 0) {
+                    preventDefault(e);
+                    for (let i=0; i<20; i++) wrapperDom.scrollLeft -= 1;
                 }
             } else if (self.allowXScroll && wrapperDom.scrollTop === maxScrollTop && deltaY > 0) { // vertical scroll on the bottom
-                if (wrapperDom.scrollLeft < innerDom.clientWidth - wrapperDom.clientWidth) preventDefault(e);
-        
-                for (let i=0; i<20; i++) {
-                    wrapperDom.scrollLeft += 1;
+                if (wrapperDom.scrollLeft < innerDom.clientWidth - wrapperDom.clientWidth) {
+                    preventDefault(e);
+                    for (let i=0; i<20; i++) wrapperDom.scrollLeft += 1;
                 }
             }
         }
 
-        self.despose = function() {
+        self.destory = function() {
             let handler = {
                 removeListeners: ()=>{
                     let wrapperDom = self.wrapperDom;
@@ -88,7 +86,7 @@
             handler.removeListeners();
             handler.clearObjs();
             handler = null;
-        },
+        }
     
         attachProperties(options);
         addListeners(wrapperDom);
