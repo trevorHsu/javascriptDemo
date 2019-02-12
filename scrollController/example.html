@@ -55,6 +55,7 @@
     </style>
 
     <script src="./scrollController.min.js"></script>
+    <!-- <script src="./scrollController.js"></script> -->
 </head>
 <body>
     <div class="wrapper">
@@ -71,22 +72,24 @@
 
 <script>
 // scroll instance
-    let wrapperDom = document.querySelector('.wrapper');
-    let innerDom = document.querySelector('.inner');
-    let scrollController = ScrollController(wrapperDom, innerDom);
+    var wrapperDom = document.getElementsByClassName('wrapper')[0];
+    var innerDom = document.getElementsByClassName('inner')[0];
+    var scrollController = ScrollController(wrapperDom, innerDom);
 
     console.log(scrollController);
 
 // controller button
-    let allowXScroll = true;
+    var allowXScroll = true;
 
     function handleControllerBtn (type) {
         switch (type) {
             case 'toggle allowXScroll':
+                console.log('toggle allowXScroll');
                 allowXScroll = !allowXScroll;
-                scrollController.setOptions({allowXScroll});
+                scrollController.setOptions({allowXScroll: allowXScroll});
                 break;
             case 'destory':
+                console.log('destory');
                 scrollController.destory();
                 break;
         }

@@ -49,12 +49,13 @@
             let innerDom = self.innerDom;
             let maxScrollTop = innerDom.clientHeight - wrapperDom.clientHeight;
             e = e || window.event;
-        
+
             e.stopPropagation();
             e.cancelBubble = true;
+
             if ( (wrapperDom.scrollTop < maxScrollTop) && (wrapperDom.scrollTop > 0) ) return; // vertical scroll on middle
         
-            let deltaY = e.deltaY || e.detail;
+            let deltaY = scrollDelta(e);
         
             if (self.allowXScroll && wrapperDom.scrollTop === 0 && deltaY < 0) { // vertical scroll on the top
                 if (wrapperDom.scrollLeft !== 0) {
@@ -73,9 +74,11 @@
             let handler = {
                 removeListeners: ()=>{
                     let wrapperDom = self.wrapperDom;
-        
-                    off(wrapperDom, 'mousewheel', mousewheelHandler);
-                    off(wrapperDom, 'DOMMouseScroll', mousewheelHandler);
+
+                    if (wrapperDom) {
+                        off(wrapperDom, 'mousewheel', mousewheelHandler);
+                        off(wrapperDom, 'DOMMouseScroll', mousewheelHandler);
+                    }
                 },
                 clearObjs: ()=>{
                     self.wrapperDom = null;
@@ -128,6 +131,13 @@
         e = e || window.event;
         e.preventDefault(); 
         e.returnValue = false; 
+    }
+
+    function scrollDelta(e) {
+        e = e || window.event;
+        let delta = e.wheelDelta ? -e.wheelDelta : e.detail;
+
+        return delta > 0 ? 1 : (delta < 0 ? -1 : 0);
     }
 
 //

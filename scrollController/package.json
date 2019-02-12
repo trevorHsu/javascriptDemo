@@ -1,7 +1,7 @@
 {
   "name": "scroll-controller",
   "version": "1.0.0",
-  "description": "allow controlling horizontal scroll",
+  "description": "allow horizontal scrolling",
   "main": "scrollController.js",
   "scripts": {
     "build": "babel scrollController.js --out-file scrollController.min.js"
