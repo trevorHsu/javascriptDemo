@@ -21,7 +21,7 @@ var scrollController = ScrollController(wrapperDom, innerDom);
 ```
 
 ### Instance Functions
-|Function|Description|Requires Parameters|
+|Function|Description|Require Parameters|
 |-|-|-|
 |setOptions|pass an options object to update the instance's configuration<br/> (for more configurations plz see below)|Yes|
 |destory|destory the instance|No|
